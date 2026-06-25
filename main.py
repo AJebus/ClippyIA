@@ -31,12 +31,11 @@ def main() -> None:
     history = []
     for i in range(MAX_ITERATIONS):
         try:
-            
             result = generate_content(client, messages, args.verbose)
             if result:
                 print(result)
                 return
-            
+
         except Exception as e:
             print(f"Gemini request failed: {e}")
     print("Max iterations reached")
@@ -80,8 +79,7 @@ def generate_content(
 
     for candidate in response.candidates:
         messages.append(candidate.content)
-    messages.append(types.Content(role="user", parts=function_results)
-
+    messages.append(types.Content(role="user", parts=function_results))
 
 
 if __name__ == "__main__":
